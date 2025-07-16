@@ -6,7 +6,7 @@ from evaluation.metrics import calculate_final_score
 # from evaluation.style_checker import check_style  # Optional
 
 def main():
-    driver_path = "ai_generated_driver.c"
+    driver_path = "samples/ai_generated_driver.c"
     
     # Run compilation evaluation
     print("🔧 Running compilation checks...")
