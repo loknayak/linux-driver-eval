@@ -2,6 +2,7 @@
 #include <linux/init.h>
 #include <linux/fs.h>
 #include <linux/uaccess.h>
+#include <linux/kernel.h> 
 
 #define DEVICE_NAME "mychardev"
 #define BUFFER_SIZE 1024
