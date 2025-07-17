@@ -1,19 +1,26 @@
 
-def calculate_overall_score(metrics):
-    weights = {
+def calculate_overall_score(metrics: dict) -> float:
+    category_weights = {
         "compilation": 0.4,
-        "functionality": 0.2,
+        "functionality": 0.25,
         "security": 0.2,
         "code_quality": 0.1,
-        "performance": 0.1
+        # you can add more weights if needed
     }
 
-    score = 0.0
-    for category, weight in weights.items():
-        if category in metrics:
+    total_score = 0
+    total_weight = 0
+
+    for category, weight in category_weights.items():
+        if category in metrics and isinstance(metrics[category], dict) and len(metrics[category]) > 0:
             category_score = sum(metrics[category].values()) / len(metrics[category])
-            score += category_score * weight * 100  # Convert to percentage
-    return round(score, 2)
+            total_score += category_score * weight
+            total_weight += weight
+
+    if total_weight == 0:
+        return 0.0  # Prevent division by zero if all categories were empty
+
+    return round(total_score, 2)
 
 
 # Example structure (to be filled by other scripts dynamically)
